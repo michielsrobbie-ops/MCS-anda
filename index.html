@@ -22,6 +22,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Anda Scheepvaart B.V.","url":"https://www.mcs-anda.nl/","logo":"https://www.mcs-anda.nl/img/logo-anda.png","telephone":"+31653484714","email":"verdonk.anda@vaart.net","foundingDate":"1927","address":{"@type":"PostalAddress","streetAddress":"Atalanta 38","postalCode":"3295 PC","addressLocality":"'s-Gravendeel","addressCountry":"NL"},"sameAs":["https://www.facebook.com/scheepvaartondernemingandavof"]}
 </script>
+<link rel="stylesheet" href="css/visual-refresh.css">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -29,12 +30,12 @@
   <symbol id="bootje" viewBox="0 0 28 14"><path d="M1 8h26l-3 5H3z" fill="#6b1e2a"/><rect x="7" y="3" width="15" height="5" fill="#c8452f"/><rect x="2" y="1" width="3" height="7" fill="#fff"/></symbol>
 </svg>
 
-<div class="melding">Demoversie van de nieuwe website. Waterstand, positie en formulier zijn nog gesimuleerd.</div>
+<div class="melding">Demoversie van de nieuwe website. Het aanvraagformulier verstuurt nog geen gegevens.</div>
 
 <header class="kop">
   <div class="wrap bar">
     <a class="merk" href="#top"><img src="img/logo-anda-wit.png" alt="Anda Scheepvaart B.V." width="1416" height="282"></a>
-    <nav class="menu" aria-label="Hoofdmenu">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu" type="button">Menu <span aria-hidden="true">☰</span></button><nav class="menu" id="main-menu" aria-label="Hoofdmenu">
       <a href="#laden">Past uw lading?</a>
       <a href="#schip">Het schip</a>
       <a href="#groen">Schoon varen</a>
@@ -47,132 +48,20 @@
 
 <main id="top">
 <section class="hero" style="padding:0">
-  <div class="foto" role="img" aria-label="De MS Anda vol met containers op een kanaal"></div>
-  <div class="wrap binnen">
-    <div>
-      <h1 aria-live="polite">Bij <span class="live" id="hD">2,80 m</span> diepgang laadt de Anda <span class="live" id="hT">2.700 ton</span>.</h1>
-      <div class="mobiel-schaal">
-        <label for="dMob">Sleep om de diepgang te veranderen</label>
-        <input type="range" id="dMob" min="1.63" max="3.59" step="0.01" value="2.80">
-      </div>
-      <div class="onder">
-        <p>De MS Anda vervoert containers, droge bulk en stukgoed door Nederland, België, Duitsland en Oostenrijk. Een familiebedrijf in de vierde generatie.</p>
-        <div class="knoppen">
-          <a class="btn btn-licht" href="#aanvraag" id="heroAanvraag">Lading aanbieden</a>
-          <a class="btn btn-lijn" href="#laden">Reken uw lading door</a>
-        </div>
-        <p class="uitleg"><span class="demo">Demo</span><span>Op de live site staat hier de toegestane diepgang van vandaag, berekend uit de actuele waterstand.</span></p>
-      </div>
-    </div>
-
-    <div class="schaal" id="schaal" role="slider" tabindex="0" aria-label="Toegestane diepgang" aria-valuemin="1.63" aria-valuemax="3.59" aria-valuenow="2.80" aria-valuetext="2,80 meter">
-      <span class="label">Sleep de waterlijn</span>
-      <div class="romp"></div>
-      <div id="tikken"></div>
-      <div class="waterlaag" id="waterlaag"></div>
-      <div class="greep" id="greep"><b id="greepTxt">2,80 m</b></div>
-    </div>
-  </div>
+  <div class="foto" role="img" aria-label="MS Anda op het water"></div>
+  <div class="wrap binnen"><div class="hero-copy">
+    <p class="eyebrow">ANDA SCHEEPVAART · SINDS 1927</p>
+    <h1>Generaties ervaring.<br><em>Vooruit over water.</em></h1>
+    <p class="hero-lead">Uw droge lading en containers in vertrouwde handen. Met de MS Anda door Nederland, België, Duitsland en Oostenrijk.</p>
+    <div class="knoppen"><a class="btn btn-licht" href="#aanvraag" id="heroAanvraag">Bespreek uw transport <span aria-hidden="true">↗</span></a><a class="hero-link" href="#schip">Ontdek de MS Anda <span aria-hidden="true">↓</span></a></div>
+  </div><div class="hero-caption"><span>MS ANDA</span><span>135 meter. Eén vertrouwd team.</span></div></div>
 </section>
-
-<div class="maat"><div class="wrap">
-  <p class="zin">135 meter lang, 11,45 meter breed. <span>Plaats voor 3.878 ton of 266 containers, met 5.000 m³ ruim onder de luiken en 8 aansluitingen voor koelcontainers.</span></p>
-  <p class="cert">Gecertificeerd voor <b>Green Award</b>, <b>GMP+</b>, <b>Niwo</b> en <b>Lean &amp; Green</b>, en voor het vervoer van gevaarlijke stoffen onder <b>ADNR</b>.</p>
-</div></div>
-
-<section id="laden">
-  <div class="wrap">
-    <div class="sectiekop">
-      <h2>Past uw lading?</h2>
-      <p class="lead">Vul in wat u wilt vervoeren. U ziet meteen hoe diep de Anda dan ligt en of dat past bij de waterstand.</p>
-    </div>
-    <div class="reken">
-      <div class="invoer">
-        <div class="keuze" role="tablist" aria-label="Soort lading">
-          <button role="tab" id="tabTon" aria-selected="true">Bulk en stukgoed</button>
-          <button role="tab" id="tabTeu" aria-selected="false">Containers</button>
-        </div>
-        <div id="modusTon">
-          <div class="veld">
-            <label for="tonIn">Hoeveel ton?</label>
-            <div class="getal"><input id="tonIn" type="number" inputmode="numeric" min="0" max="3878" step="50" value="2400"><span>ton</span></div>
-            <input type="range" id="tonSch" min="0" max="3878" step="50" value="2400" aria-label="Aantal ton">
-          </div>
-          <dl class="uitkomst">
-            <div><dt>Diepgang met deze lading</dt><dd id="uD">2,59 m</dd></div>
-            <div><dt>Toegestane diepgang</dt><dd id="uMax">2,80 m</dd></div>
-            <div><dt id="uRestNaam">Er kan nog bij</dt><dd id="uRest">ca. 300 ton</dd></div>
-            <div><dt>Past het?</dt><dd><span class="status ja" id="uStatus">Ja, dit past</span></dd></div>
-          </dl>
-        </div>
-        <div id="modusTeu" hidden>
-          <div class="veld">
-            <label for="teuIn">Hoeveel containers (TEU)?</label>
-            <div class="getal"><input id="teuIn" type="number" inputmode="numeric" min="0" max="266" step="2" value="160"><span>TEU</span></div>
-            <input type="range" id="teuSch" min="0" max="266" step="2" value="160" aria-label="Aantal TEU">
-          </div>
-          <dl class="uitkomst">
-            <div><dt>Lagen in het ruim</dt><dd id="uLagen">3 van de 4</dd></div>
-            <div><dt>Nog vrij</dt><dd id="uVrij">106 TEU</dd></div>
-            <div><dt>Vrachtwagens die niet hoeven te rijden</dt><dd id="uWagens">ca. 81</dd></div>
-            <div><dt>Koelcontainers</dt><dd>tot 8 aansluitingen</dd></div>
-          </dl>
-        </div>
-        <a class="btn btn-romp" href="#aanvraag" id="rekenAanvraag">Vraag een prijs aan voor 2.400 ton</a>
-        <p class="klein">Een indicatie op basis van de laadtabel van de Anda. De definitieve berekening maken we samen met u.</p>
-      </div>
-
-      <div class="beeld">
-        <div class="boven"><span>Zijaanzicht, 135 meter</span><span id="beeldTxt">diepgang 2,59 m</span></div>
-        <svg viewBox="0 0 1000 280" role="img" aria-label="Zijaanzicht van het schip met lading en waterlijn">
-          <defs>
-            <clipPath id="ruimClip"><rect x="150" y="60" width="715" height="150"/></clipPath>
-            <linearGradient id="waterGr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#28504e" stop-opacity=".5"/><stop offset="1" stop-color="#15302f" stop-opacity=".9"/></linearGradient>
-          </defs>
-          <rect x="70" y="40" width="10" height="75" fill="#e9eff2"/>
-          <rect x="46" y="22" width="62" height="24" rx="2" fill="#ffffff"/>
-          <rect x="52" y="28" width="50" height="8" fill="#15302f"/>
-          <rect x="40" y="96" width="92" height="22" fill="#ffffff"/>
-          <path d="M22 118 H930 Q962 118 975 140 L982 170 Q985 240 950 240 H60 Q30 240 26 200 Z" fill="#6b1e2a"/>
-          <path d="M26 152 H982 L985 240 H60 Q30 240 26 200 Z" fill="#101d1d"/>
-          <rect x="150" y="98" width="715" height="112" fill="#e9eff2" stroke="#8eaec2" stroke-dasharray="3 3"/>
-          <g clip-path="url(#ruimClip)">
-            <rect id="bulk" x="150" y="210" width="715" height="0" fill="#8b7b60"/>
-            <path id="bulkTop" d="" fill="#8b7b60"/>
-          </g>
-          <g id="containers"></g>
-          <rect x="150" y="210" width="715" height="3" fill="#101d1d"/>
-          <image href="img/favicon-512.png" x="893" y="123" width="24" height="24"/>
-          <g id="merken" fill="#15302f" font-family="Karla, sans-serif" font-size="11"></g>
-          <g class="wl" id="waterG">
-            <rect x="0" y="0" width="1000" height="200" fill="url(#waterGr)"/>
-            <path id="golf" d="" fill="none" stroke="#ffffff" stroke-opacity=".8" stroke-width="2"/>
-          </g>
-          <g class="wl" id="maxG">
-            <line x1="0" x2="1000" y1="0" y2="0" stroke="#6b1e2a" stroke-width="2.5" stroke-dasharray="8 6"/>
-            <text x="12" y="-7" font-family="Karla, sans-serif" font-weight="700" font-size="13" fill="#6b1e2a" id="maxTxt">toegestaan 2,80 m</text>
-          </g>
-        </svg>
-        <div class="legenda"><span><i></i>waterlijn met uw lading</span><span><i class="max"></i>toegestane diepgang</span></div>
-        <div class="tabel">
-          <table>
-            <caption>Laadtabel MS Anda</caption>
-            <tbody>
-              <tr><th scope="row">Diepgang (m)</th><td>1,63</td><td>1,98</td><td>2,32</td><td>2,66</td><td>3,00</td><td>3,34</td><td>3,59</td></tr>
-              <tr><th scope="row">Ton</th><td>1.000</td><td>1.500</td><td>2.000</td><td>2.500</td><td>3.000</td><td>3.500</td><td>3.878</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<div class="maat"><div class="wrap stats"><div><strong>135 <small>m</small></strong><span>Lengte van het schip</span></div><div><strong>3.878 <small>ton</small></strong><span>Laadvermogen bij 3,59 m diepgang</span></div><div><strong>266 <small>TEU</small></strong><span>Containercapaciteit zonder luiken</span></div><div><strong>4</strong><span>Generaties aan het roer</span></div></div></div>
 <section class="schip" id="schip">
   <div class="wrap schip-rij">
     <div>
       <div class="sectiekop" style="margin-bottom:0">
-        <h2>Eén schip voor alle droge lading</h2>
+        <p class="eyebrow">VEELZIJDIG OP HET WATER</p><h2>Eén schip.<br>Vol mogelijkheden.</h2>
         <p class="lead">De MS Anda is in 2009 opgeleverd als multipurpose-schip. Een ruim van 105 meter, met of zonder luiken, en containers tot vier lagen hoog.</p>
       </div>
       <ul class="lading">
@@ -209,7 +98,106 @@
         <div><dt>Klaproeren</dt><dd>2</dd></div>
         <div><dt>Spudpaal voor</dt><dd>10,60 m</dd></div>
       </dl>
-      <button class="btn btn-lijn" type="button" data-toast="Op de live site downloadt u hier de scheepsfiche als PDF.">Download de scheepsfiche (pdf)</button>
+      <a class="btn btn-lijn" href="docs/scheepsfiche-ms-anda.pdf" download>Download de scheepsfiche (pdf)</a>
+    </div>
+  </div>
+</section>
+
+<section id="laden">
+  <div class="wrap">
+    <div class="sectiekop">
+      <p class="eyebrow">UW TRANSPORT IN BEELD</p><h2>Ruimte voor uw lading.</h2>
+      <p class="lead">Verken de capaciteit van de Anda. Vul uw laadgewicht in en bekijk de geschatte diepgang. De schipper beoordeelt of het vervoer op uw route mogelijk is.</p>
+    </div>
+<div class="reken">
+      <div class="invoer">
+        <div class="keuze" role="tablist" aria-label="Soort lading">
+          <button role="tab" id="tabTon" aria-selected="true">Bulk en stukgoed</button>
+          <button role="tab" id="tabTeu" aria-selected="false">Containers</button>
+        </div>
+        <div id="modusTon">
+          <div class="veld">
+            <label for="tonIn">Hoeveel ton?</label>
+            <div class="getal"><input id="tonIn" aria-describedby="calc-error" type="number" inputmode="numeric" min="0" max="3878" step="1" value="2400"><span>ton</span></div>
+            <input type="range" id="tonSch" min="0" max="3878" step="1" value="2400" aria-label="Aantal ton">
+          </div>
+          <dl class="uitkomst">
+            <div><dt>Geschatte diepgang</dt><dd id="uD">2,59 m</dd></div>
+            <div class="advanced-result" hidden><dt>Zelf ingestelde diepgang</dt><dd id="uMax">2,80 m</dd></div>
+            <div class="advanced-result" hidden><dt id="uRestNaam">Er kan nog bij</dt><dd id="uRest">ca. 300 ton</dd></div>
+            <div class="advanced-result" hidden><dt>Vergelijking</dt><dd><span class="status ja" id="uStatus">Onder de ingestelde grens</span></dd></div>
+          </dl>
+        </div>
+        <div id="modusTeu" hidden><p class="klein" style="margin:0 0 18px">1 TEU is één 20-voetscontainer; een 40-voetscontainer telt als 2 TEU. Maximaal 266 TEU zonder luiken. Gewicht en stuwplan bepalen wat werkelijk mee kan.</p>
+          <div class="veld">
+            <label for="teuIn">Hoeveel TEU?</label>
+            <div class="getal"><input id="teuIn" aria-describedby="calc-error" type="number" inputmode="numeric" min="0" max="266" step="1" value="160"><span>TEU</span></div>
+            <input type="range" id="teuSch" min="0" max="266" step="1" value="160" aria-label="Aantal TEU">
+          </div>
+          <dl class="uitkomst">
+            
+            <div><dt>Resterende nominale capaciteit</dt><dd id="uVrij">106 TEU</dd></div>
+            
+            <div><dt>Koelcontainers</dt><dd>tot 8 aansluitingen</dd></div>
+          </dl>
+        </div>
+<details class="advanced" id="advanced"><summary>Geavanceerd: diepgang zelf instellen</summary>    <div class="depth-panel"><div><p class="eyebrow">INDICATIEVE LAADCALCULATOR</p><p class="depth-result">Bij <strong id="hD">2,80 m</strong> diepgang circa <strong id="hT">2.700 ton</strong>.</p><p class="klein">Kies zelf een diepgang. Dit is geen actuele waterstand of vaaradvies.</p>      <div class="mobiel-schaal">
+        <label for="dMob">Sleep om de diepgang te veranderen</label>
+        <input type="range" id="dMob" min="1.63" max="3.59" step="0.01" value="2.80">
+      </div>
+</div>    <div class="schaal" id="schaal" role="slider" tabindex="0" aria-label="Zelf ingestelde diepgang" aria-valuemin="1.63" aria-valuemax="3.59" aria-valuenow="2.80" aria-valuetext="2,80 meter">
+      <span class="label">Sleep de waterlijn</span>
+      <div class="romp"></div>
+      <div id="tikken"></div>
+      <div class="waterlaag" id="waterlaag"></div>
+      <div class="greep" id="greep"><b id="greepTxt">2,80 m</b></div>
+    </div>
+</div></details>        <p class="calc-error" id="calc-error" role="status" hidden></p><a class="btn btn-romp" href="#aanvraag" id="rekenAanvraag">Vraag een prijs aan voor 2.400 ton</a>
+        <p class="klein">Indicatie op basis van de gepubliceerde laadtabel. De schipper beoordeelt uw route, waterdiepte en lading. Aan deze berekening kunt u geen transportbevestiging ontlenen.</p>
+      </div>
+
+      <div class="beeld">
+        <div class="boven"><span>Zijaanzicht, 135 meter</span><span id="beeldTxt">diepgang 2,59 m</span></div>
+        <svg viewBox="0 0 1000 280" role="img" aria-label="Zijaanzicht van het schip met lading en waterlijn">
+          <defs>
+            <clipPath id="ruimClip"><rect x="150" y="60" width="715" height="150"/></clipPath>
+            <linearGradient id="waterGr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#28504e" stop-opacity=".5"/><stop offset="1" stop-color="#15302f" stop-opacity=".9"/></linearGradient>
+          </defs>
+          <rect x="70" y="40" width="10" height="75" fill="#e9eff2"/>
+          <rect x="46" y="22" width="62" height="24" rx="2" fill="#ffffff"/>
+          <rect x="52" y="28" width="50" height="8" fill="#15302f"/>
+          <rect x="40" y="96" width="92" height="22" fill="#ffffff"/>
+          <path d="M22 118 H930 Q962 118 975 140 L982 170 Q985 240 950 240 H60 Q30 240 26 200 Z" fill="#6b1e2a"/>
+          <path d="M26 152 H982 L985 240 H60 Q30 240 26 200 Z" fill="#101d1d"/>
+          <rect x="150" y="98" width="715" height="112" fill="#e9eff2" stroke="#8eaec2" stroke-dasharray="3 3"/>
+          <g clip-path="url(#ruimClip)">
+            <rect id="bulk" x="150" y="210" width="715" height="0" fill="#8b7b60"/>
+            <path id="bulkTop" d="" fill="#8b7b60"/>
+          </g>
+          <g id="containers"></g>
+          <rect x="150" y="210" width="715" height="3" fill="#101d1d"/>
+          <image href="img/favicon-512.png" x="893" y="123" width="24" height="24"/>
+          <g id="merken" fill="#15302f" font-family="Karla, sans-serif" font-size="11"></g>
+          <g class="wl" id="waterG">
+            <rect x="0" y="0" width="1000" height="200" fill="url(#waterGr)"/>
+            <path id="golf" d="" fill="none" stroke="#ffffff" stroke-opacity=".8" stroke-width="2"/>
+          </g>
+          <g class="wl" id="maxG" style="display:none">
+            <line x1="0" x2="1000" y1="0" y2="0" stroke="#6b1e2a" stroke-width="2.5" stroke-dasharray="8 6"/>
+            <text x="12" y="-7" font-family="Karla, sans-serif" font-weight="700" font-size="13" fill="#6b1e2a" id="maxTxt">toegestaan 2,80 m</text>
+          </g>
+        </svg>
+        <div class="legenda"><span><i></i>waterlijn met uw lading</span><span id="maxLegend" hidden><i class="max"></i>zelf ingestelde diepgang</span></div>
+        <div class="tabel">
+          <table>
+            <caption>Laadtabel MS Anda</caption>
+            <tbody>
+              <tr><th scope="row">Diepgang (m)</th><td>1,63</td><td>1,98</td><td>2,32</td><td>2,66</td><td>3,00</td><td>3,34</td><td>3,59</td></tr>
+              <tr><th scope="row">Ton</th><td>1.000</td><td>1.500</td><td>2.000</td><td>2.500</td><td>3.000</td><td>3.500</td><td>3.878</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -217,7 +205,7 @@
 <section class="donker" id="groen">
   <div class="wrap groen-rij">
     <div>
-      <h2>Schoon varen deden we al voordat het moest</h2>
+      <p class="eyebrow">MET OOG VOOR MORGEN</p><h2>Vooruitgang zit<br>in onze natuur.</h2>
       <p class="lead" style="margin-top:20px">De Anda kreeg als eerste multipurpose-schip voor containers, droge bulk en stukgoed een groen label. Een roetfilter en een SCR-katalysator reinigen de uitlaatgassen.</p>
       <ul class="feiten">
         <li><b>ca. 90%</b><span>minder stikstofoxiden door de SCR-katalysator</span></li>
@@ -277,18 +265,15 @@
           <g font-size="11" fill="#566867" font-style="italic">
             <text x="196" y="210">Rijn</text><text x="560" y="398">Main</text><text x="676" y="440">Donau</text><text x="160" y="270">Maas</text><text x="318" y="360">Moezel</text>
           </g>
-          <use href="#bootje" x="321" y="238" width="28" height="14"/>
         </svg>
       </div>
-      <aside class="positie">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="color:var(--muted-d)">Waar is de Anda nu?</span><span class="demo">Demo</span></div>
-        <p class="plek">Op de Rijn bij Duisburg</p>
-        <dl>
-          <div><dt>Richting</dt><dd>stroomopwaarts</dd></div>
-          <div><dt>Bron</dt><dd>AIS-positie</dd></div>
-        </dl>
-        <p>Heeft u lading langs de route? Bel ons, dan kijken we of het past.</p>
-        <a class="btn btn-licht" href="tel:+31653484714">Bel 06 53 48 47 14</a>
+      <aside class="positie" aria-labelledby="route-contact">
+        <span class="eyebrow" style="color:var(--muted-d);margin-bottom:0">UW ROUTE, ONS VAARGEBIED</span>
+        <h3 class="plek" id="route-contact">Transport op uw route?</h3>
+        <p>Van laadhaven tot loshaven: we denken graag met u mee over het vervoer van uw containers, droge bulk of stukgoed.</p>
+        <p>Neem contact op om uw route, lading en gewenste planning te bespreken.</p>
+        <a class="btn btn-licht" href="#aanvraag">Bespreek uw transport <span aria-hidden="true">↗</span></a>
+        <a href="tel:+31653484714">Of bel 06 53 48 47 14</a>
       </aside>
     </div>
   </div>
@@ -301,7 +286,7 @@
       <div class="naam"><img src="img/beeldmerk.png" alt="" width="380" height="365" loading="lazy"><p>De naam komt van Jan en Ada, de ouders van Jacob.</p></div>
     </div>
     <div>
-      <h2>Vier generaties aan het roer</h2>
+      <p class="eyebrow">HET VERHAAL VAN ANDA</p><h2>Vier generaties.<br>Dezelfde toewijding.</h2>
       <p class="lead" style="margin-top:20px">Jacob en Paula Verdonk leiden het bedrijf nu, samen met twee ervaren kapiteins. Ze werken op dezelfde manier als de generaties voor hen.</p>
       <ol class="tijd">
         <li><time>1927</time><p>M. de Looff laat de <b>Jamajo</b> te water, een sleepschip van 500 ton.</p></li>
@@ -320,18 +305,18 @@
 <section id="aanvraag">
   <div class="wrap">
     <div class="sectiekop">
-      <h2>Lading aanbieden</h2>
+      <p class="eyebrow">DIRECT CONTACT</p><h2>Wat mogen we<br>voor u vervoeren?</h2>
       <p class="lead">Van waar naar waar, wanneer en hoeveel. Meer hoeven we niet te weten om met u mee te denken.</p>
     </div>
     <div class="aanvraag-rij">
       <div class="formulier">
-        <form id="form" novalidate>
-          <div class="stappen" id="stappen" aria-hidden="true"><span class="aan"></span><span id="st2"></span></div>
+        <form id="form" novalidate aria-describedby="form-note">
+          <p class="klein" id="form-note" style="margin:0 0 20px">Dit is een demo. U kunt de aanvraag bekijken, maar er worden geen gegevens verstuurd. Gebruik voorbeeldgegevens.</p><div class="stappen" id="stappen" aria-hidden="true"><span class="aan"></span><span id="st2"></span></div>
           <div id="stap1">
             <p class="stapnaam">Stap 1 van 2: de lading</p>
             <div class="velden">
-              <div class="veld"><label for="fVan">Laadhaven</label><input class="inp" id="fVan" placeholder="Bijvoorbeeld Rotterdam" autocomplete="off"></div>
-              <div class="veld"><label for="fNaar">Loshaven</label><input class="inp" id="fNaar" placeholder="Bijvoorbeeld Duisburg" autocomplete="off"></div>
+              <div class="veld"><label for="fVan">Laadhaven</label><input class="inp" id="fVan" required placeholder="Bijvoorbeeld Rotterdam" autocomplete="off"></div>
+              <div class="veld"><label for="fNaar">Loshaven</label><input class="inp" id="fNaar" required placeholder="Bijvoorbeeld Duisburg" autocomplete="off"></div>
               <div class="veld heel"><span class="veldnaam" id="soortNaam">Soort lading</span>
                 <div class="chips" role="radiogroup" aria-labelledby="soortNaam">
                   <input type="radio" name="soort" id="s1" value="droge bulk" checked><label for="s1">Droge bulk</label>
@@ -340,25 +325,25 @@
                   <input type="radio" name="soort" id="s4" value="andere lading"><label for="s4">Anders</label>
                 </div>
               </div>
-              <div class="veld"><label for="fHoev">Hoeveelheid</label><input class="inp" id="fHoev" value="2.400 ton"></div>
-              <div class="veld"><label for="fDatum">Laden vanaf</label><input class="inp" id="fDatum" type="date"></div>
+              <div class="veld"><label for="fHoev" id="hoeveelheidLabel">Hoeveelheid (ton)</label><input class="inp" id="fHoev" required value="2.400 ton"></div>
+              <div class="veld"><label for="fDatum">Laden vanaf</label><input class="inp" id="fDatum" required type="date"></div>
             </div>
             <div class="acties"><span class="klein" style="margin:0">Dit duurt minder dan een minuut.</span><button type="button" class="btn btn-romp" id="verder">Verder naar uw gegevens</button></div>
           </div>
           <div id="stap2" hidden>
             <p class="stapnaam">Stap 2 van 2: uw gegevens</p>
             <div class="velden">
-              <div class="veld"><label for="fNaam">Naam</label><input class="inp" id="fNaam" autocomplete="name"></div>
-              <div class="veld"><label for="fBedrijf">Bedrijf</label><input class="inp" id="fBedrijf" autocomplete="organization"></div>
-              <div class="veld"><label for="fTel">Telefoon</label><input class="inp" id="fTel" type="tel" autocomplete="tel"></div>
-              <div class="veld"><label for="fMail">E-mail</label><input class="inp" id="fMail" type="email" autocomplete="email"></div>
+              <div class="veld"><label for="fNaam">Naam</label><input class="inp" id="fNaam" required autocomplete="name"></div>
+              <div class="veld"><label for="fBedrijf">Bedrijf (optioneel)</label><input class="inp" id="fBedrijf" autocomplete="organization"></div>
+              <div class="veld"><label for="fTel">Telefoon (optioneel)</label><input class="inp" id="fTel" type="tel" autocomplete="tel"></div>
+              <div class="veld"><label for="fMail">E-mail</label><input class="inp" id="fMail" required type="email" autocomplete="email"></div>
             </div>
-            <div class="acties"><button type="button" class="terug" id="terug">Terug naar de lading</button><button type="submit" class="btn btn-romp">Aanvraag versturen</button></div>
+            <div class="acties"><button type="button" class="terug" id="terug">Terug naar de lading</button><button type="submit" class="btn btn-romp">Bekijk voorbeeldaanvraag</button></div>
           </div>
           <div id="stap3" class="klaar" hidden>
             <span class="demo" style="justify-self:start">Demo, er is niets verstuurd</span>
-            <h3>Aanvraag verstuurd</h3>
-            <p class="lead" id="klaarTxt"></p>
+            <h3>Uw voorbeeldaanvraag</h3>
+            <p class="lead" id="klaarTxt" tabindex="-1"></p><dl class="demo-summary" id="aanvraagOverzicht"></dl><button class="btn btn-lijn" type="button" id="bewerkAanvraag">Aanvraag aanpassen</button>
           </div>
         </form>
       </div>

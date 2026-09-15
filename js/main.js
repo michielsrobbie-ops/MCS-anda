@@ -38,7 +38,7 @@
   $('#containers').innerHTML=ch; const dozen=[...document.querySelectorAll('#containers rect')];
 
   function teken(){
-    const ht=r50(tonnen(toegestaan));
+    const ht=Math.floor(tonnen(toegestaan));
     $('#hD').textContent=nl(toegestaan,2)+' m'; $('#hT').textContent=nl(ht)+' ton';
     const p=pct(toegestaan);
     $('#greep').style.top=p+'%'; $('#waterlaag').style.top=p+'%'; $('#greepTxt').textContent=nl(toegestaan,2)+' m';
@@ -47,15 +47,15 @@
 
     $('#uMax').textContent=nl(toegestaan,2)+' m';
     $('#maxG').style.transform=`translateY(${y(toegestaan)}px)`;
-    $('#maxTxt').textContent='toegestaan '+nl(toegestaan,2)+' m';
+    $('#maxTxt').textContent='ingesteld '+nl(toegestaan,2)+' m';
 
     let hoev, wd;
     if(modus==='ton'){
       const d=diepgang(ton); wd=d; hoev=nl(ton)+' ton';
       $('#uD').textContent=nl(d,2)+' m';
       const st=$('#uStatus');
-      if(d<=toegestaan+1e-6){st.className='status ja';st.textContent='Ja, dit past';$('#uRestNaam').textContent='Er kan nog bij';$('#uRest').textContent='ca. '+nl(Math.max(0,r50(ht-ton)))+' ton';}
-      else{st.className='status nee';st.textContent='Te zwaar bij deze diepgang';$('#uRestNaam').textContent='Maximaal bij deze diepgang';$('#uRest').textContent='ca. '+nl(ht)+' ton';}
+      if(d<=toegestaan+1e-6){st.className='status ja';st.textContent='Onder de ingestelde grens';$('#uRestNaam').textContent='Verschil met ingestelde grens';$('#uRest').textContent='ca. '+nl(Math.max(0,r50(ht-ton)))+' ton';}
+      else{st.className='status nee';st.textContent='Boven de ingestelde grens';$('#uRestNaam').textContent='Maximaal bij deze diepgang';$('#uRest').textContent='ca. '+nl(ht)+' ton';}
       const h=Math.min(1,ton/MAXT)*98, top=210-h;
       $('#bulk').setAttribute('y',top);$('#bulk').setAttribute('height',h);
       $('#bulkTop').setAttribute('d',h>1?`M150 ${top} Q507 ${top-Math.min(18,h*.3)-10} 865 ${top} Z`:'');
@@ -63,41 +63,97 @@
       $('#beeldTxt').textContent='diepgang '+nl(d,2)+' m';
     }else{
       hoev=nl(teu)+' TEU'; wd=Math.min(toegestaan,2.4);
-      $('#uLagen').textContent=Math.min(4,Math.ceil(teu/66.5))+' van de 4';
       $('#uVrij').textContent=nl(266-teu)+' TEU';
-      $('#uWagens').textContent='ca. '+nl(Math.round(teu*134/266));
       dozen.forEach((r,i)=>r.setAttribute('opacity',i<teu?1:0));
       $('#bulk').setAttribute('height',0);$('#bulkTop').setAttribute('d','');
       $('#beeldTxt').textContent=nl(teu)+' van 266 TEU';
     }
+    document.querySelector('.legenda').hidden=modus!=='ton';
+    $('#waterG').style.display=modus==='ton'?'':'none';
+    $('#maxG').style.display=modus==='ton'&&$('#advanced').open?'':'none';
+    $('#maxLegend').hidden=!(modus==='ton'&&$('#advanced').open);
+    $('#advanced').hidden=modus!=='ton';
     $('#waterG').style.transform=`translateY(${y(wd)}px)`;
-    const rk=$('#rekenAanvraag'); rk.textContent='Vraag een prijs aan voor '+hoev; rk.dataset.hoev=hoev;
+    const rk=$('#rekenAanvraag'); rk.textContent='Bespreek deze lading: '+hoev; rk.dataset.hoev=hoev;
   }
 
-  const koppel=(n,s,max,f)=>{n.addEventListener('input',()=>{const v=Math.max(0,Math.min(max,+n.value||0));s.value=v;vul(s);f(v);});s.addEventListener('input',()=>{n.value=s.value;vul(s);f(+s.value);});vul(s);};
+  const validateAmount=()=>{
+    const input=$(modus==='ton'?'#tonIn':'#teuIn');
+    const valid=input.value!==''&&input.validity.valid;
+    $('#calc-error').hidden=valid;
+    $('#calc-error').textContent=modus==='ton'?'Vul een heel getal in van 0 tot 3.878 ton. Bespreek grotere ladingen rechtstreeks met ons.':'Vul een heel getal in van 0 tot 266 TEU.';
+    $('#rekenAanvraag').setAttribute('aria-disabled',String(!valid));
+    return valid;
+  };
+  const koppel=(n,s,max,f)=>{
+    n.addEventListener('input',()=>{if(n.value!==''&&n.validity.valid){s.value=n.value;vul(s);f(+n.value);}validateAmount();});
+    s.addEventListener('input',()=>{n.value=s.value;vul(s);f(+s.value);validateAmount();});vul(s);
+  };
   koppel($('#tonIn'),$('#tonSch'),MAXT,v=>{ton=v;teken();});
   koppel($('#teuIn'),$('#teuSch'),266,v=>{teu=v;teken();});
-  const kies=m=>{modus=m;$('#tabTon').setAttribute('aria-selected',m==='ton');$('#tabTeu').setAttribute('aria-selected',m==='teu');$('#modusTon').hidden=m!=='ton';$('#modusTeu').hidden=m!=='teu';teken();};
+  const kies=m=>{modus=m;$('#tabTon').setAttribute('aria-selected',m==='ton');$('#tabTeu').setAttribute('aria-selected',m==='teu');$('#modusTon').hidden=m!=='ton';$('#modusTeu').hidden=m!=='teu';teken();validateAmount();};
   $('#tabTon').onclick=()=>kies('ton'); $('#tabTeu').onclick=()=>kies('teu');
 
-  $('#rekenAanvraag').addEventListener('click',()=>{$('#fHoev').value=$('#rekenAanvraag').dataset.hoev;$(modus==='ton'?'#s1':'#s2').checked=true;});
-  $('#heroAanvraag').addEventListener('click',()=>{$('#fHoev').value='tot '+$('#hT').textContent;});
+  const updateQuantityLabel=()=>{
+    const type=document.querySelector('input[name=soort]:checked').value;
+    const container=type==='containers',bulk=type==='droge bulk';
+    $('#hoeveelheidLabel').textContent=container?'Hoeveelheid (TEU)':bulk?'Hoeveelheid (ton)':'Hoeveelheid (inclusief eenheid)';
+    $('#fHoev').placeholder=container?'Bijvoorbeeld 160 TEU':bulk?'Bijvoorbeeld 2.400 ton':'Bijvoorbeeld 20 pallets of 500 ton';
+  };
+  document.querySelectorAll('input[name=soort]').forEach(input=>input.addEventListener('change',()=>{
+    $('#fHoev').value='';$('#fHoev').setCustomValidity('');updateQuantityLabel();
+  }));
+  $('#rekenAanvraag').addEventListener('click',e=>{if(!validateAmount()){e.preventDefault();return;}$(modus==='ton'?'#s1':'#s2').checked=true;updateQuantityLabel();$('#fHoev').value=$('#rekenAanvraag').dataset.hoev;});
+
+  
 
   // vrachtwagens (statisch)
   let w='';for(let i=0;i<134;i++)w+='<svg viewBox="0 0 30 14"><use href="#wagen"/></svg>';
   $('#raster').innerHTML=w;
 
-  // formulier
-  const dt=new Date();dt.setDate(dt.getDate()+7);$('#fDatum').value=dt.toISOString().slice(0,10);
-  $('#verder').onclick=()=>{$('#stap1').hidden=true;$('#stap2').hidden=false;$('#st2').classList.add('aan');$('#fNaam').focus();};
-  $('#terug').onclick=()=>{$('#stap2').hidden=true;$('#stap1').hidden=false;$('#st2').classList.remove('aan');};
-  $('#form').addEventListener('submit',e=>{e.preventDefault();$('#stap2').hidden=true;$('#stap3').hidden=false;$('#stappen').hidden=true;
-    const van=$('#fVan').value.trim(),naar=$('#fNaar').value.trim();
-    const route=van&&naar?`, van ${van} naar ${naar}`:'';
-    $('#klaarTxt').textContent=`${$('#fHoev').value} ${document.querySelector('input[name=soort]:checked').value}${route}. Op de live site komt deze aanvraag direct binnen bij de familie Verdonk.`;});
+  $('#advanced').addEventListener('toggle',()=>{
+    document.querySelectorAll('.advanced-result').forEach(el=>el.hidden=!$('#advanced').open);
+    teken();
+  });
+
+  // Demonstration only: no network request and no storage of personal data.
+  const date=new Date();
+  const today=[date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-');
+  $('#fDatum').min=today; $('#fDatum').value='';
+  const validateStep=id=>{
+    for(const input of document.querySelectorAll(id+' input')){
+      if(input.required&&input.type!=='date')input.setCustomValidity(input.value.trim()?'':'Vul dit veld in.');
+      if(!input.reportValidity())return false;
+    }
+    return true;
+  };
+  $('#form').addEventListener('input',e=>{if(e.target.setCustomValidity)e.target.setCustomValidity('');});
+  const showStep=n=>{[1,2,3].forEach(i=>$('#stap'+i).hidden=i!==n);$('#stappen').hidden=n===3;$('#st2').classList.toggle('aan',n===2);};
+  $('#verder').onclick=()=>{if(validateStep('#stap1')){showStep(2);$('#fNaam').focus();}};
+  $('#terug').onclick=()=>{showStep(1);$('#fVan').focus();};
+  $('#bewerkAanvraag').onclick=()=>{showStep(1);$('#fVan').focus();};
+  $('#form').addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!$('#stap1').hidden){$('#verder').click();return;}
+    if(!validateStep('#stap2'))return;
+    $('#klaarTxt').textContent='Zo ziet uw aanvraag eruit. Er is niets verstuurd. Neem voor een echte aanvraag telefonisch of per e-mail contact op.';
+    const labels=[['Laadhaven','fVan'],['Loshaven','fNaar'],['Hoeveelheid','fHoev'],['Laden vanaf','fDatum'],['Naam','fNaam'],['Bedrijf','fBedrijf'],['Telefoon','fTel'],['E-mail','fMail']];
+    const list=$('#aanvraagOverzicht');list.replaceChildren();
+    const addRow=(label,value)=>{const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;row.append(dt,dd);list.append(row);};
+    addRow('Soort lading',document.querySelector('input[name=soort]:checked').value);
+    labels.forEach(([label,id])=>{const value=$('#'+id).value.trim();if(value)addRow(label,id==='fDatum'?value.split('-').reverse().join('-'):value);});
+    showStep(3);$('#klaarTxt').focus();
+  });
 
   const toast=$('#toast');let tt;
   document.querySelectorAll('[data-toast]').forEach(b=>b.addEventListener('click',()=>{toast.textContent=b.dataset.toast;toast.classList.add('aan');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('aan'),2800);}));
 
   teken();
 })();
+
+const menuButton=document.querySelector('.menu-toggle');
+const navigation=document.querySelector('#main-menu');
+function closeMenu(){menuButton.setAttribute('aria-expanded','false');navigation.classList.remove('is-open');}
+menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));navigation.classList.toggle('is-open',open);});
+navigation.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();}});
