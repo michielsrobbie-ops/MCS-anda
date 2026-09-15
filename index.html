@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anda Scheepvaart B.V. | Binnenvaart voor droge lading en containers</title>
+<meta name="description" content="Anda Scheepvaart vaart met de MS Anda (135 m, 3.878 ton, 266 TEU) droge lading en containers door Nederland, België, Duitsland en Oostenrijk. Familiebedrijf uit 's-Gravendeel sinds 1927.">
+<meta name="theme-color" content="#15302f">
+<link rel="canonical" href="https://www.mcs-anda.nl/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Anda Scheepvaart B.V.">
+<meta property="og:description" content="Droge lading en containers over water met de MS Anda. Familiebedrijf sinds 1927.">
+<meta property="og:image" content="https://www.mcs-anda.nl/img/voorschip.webp">
+<meta property="og:locale" content="nl_NL">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="img/favicon-512.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,400..800&family=Karla:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css?v=20260915">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Anda Scheepvaart B.V.","url":"https://www.mcs-anda.nl/","logo":"https://www.mcs-anda.nl/img/logo-anda.png","telephone":"+31653484714","email":"verdonk.anda@vaart.net","foundingDate":"1927","address":{"@type":"PostalAddress","streetAddress":"Atalanta 38","postalCode":"3295 PC","addressLocality":"'s-Gravendeel","addressCountry":"NL"},"sameAs":["https://www.facebook.com/scheepvaartondernemingandavof"]}
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wagen" viewBox="0 0 30 14"><rect x="0" y="1" width="19" height="9" rx="1" fill="#b8cddb"/><path d="M20 4h5l3.5 3.5V10H20z" fill="#b8cddb"/><circle cx="5" cy="11.5" r="2" fill="#15302f" stroke="#b8cddb" stroke-width="1.2"/><circle cx="24" cy="11.5" r="2" fill="#15302f" stroke="#b8cddb" stroke-width="1.2"/></symbol>
+  <symbol id="bootje" viewBox="0 0 28 14"><path d="M1 8h26l-3 5H3z" fill="#6b1e2a"/><rect x="7" y="3" width="15" height="5" fill="#c8452f"/><rect x="2" y="1" width="3" height="7" fill="#fff"/></symbol>
+</svg>
+
+<div class="melding">Demoversie van de nieuwe website. Waterstand, positie en formulier zijn nog gesimuleerd.</div>
+
+<header class="kop">
+  <div class="wrap bar">
+    <a class="merk" href="#top"><img src="img/logo-anda-wit.png" alt="Anda Scheepvaart B.V." width="1416" height="282"></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#laden">Past uw lading?</a>
+      <a href="#schip">Het schip</a>
+      <a href="#groen">Schoon varen</a>
+      <a href="#vaargebied">Vaargebied</a>
+      <a href="#familie">Over ons</a>
+    </nav>
+    <a class="btn btn-romp" href="#aanvraag">Lading aanbieden</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding:0">
+  <div class="foto" role="img" aria-label="De MS Anda vol met containers op een kanaal"></div>
+  <div class="wrap binnen">
+    <div>
+      <h1 aria-live="polite">Bij <span class="live" id="hD">2,80 m</span> diepgang laadt de Anda <span class="live" id="hT">2.700 ton</span>.</h1>
+      <div class="mobiel-schaal">
+        <label for="dMob">Sleep om de diepgang te veranderen</label>
+        <input type="range" id="dMob" min="1.63" max="3.59" step="0.01" value="2.80">
+      </div>
+      <div class="onder">
+        <p>De MS Anda vervoert containers, droge bulk en stukgoed door Nederland, België, Duitsland en Oostenrijk. Een familiebedrijf in de vierde generatie.</p>
+        <div class="knoppen">
+          <a class="btn btn-licht" href="#aanvraag" id="heroAanvraag">Lading aanbieden</a>
+          <a class="btn btn-lijn" href="#laden">Reken uw lading door</a>
+        </div>
+        <p class="uitleg"><span class="demo">Demo</span><span>Op de live site staat hier de toegestane diepgang van vandaag, berekend uit de actuele waterstand.</span></p>
+      </div>
+    </div>
+
+    <div class="schaal" id="schaal" role="slider" tabindex="0" aria-label="Toegestane diepgang" aria-valuemin="1.63" aria-valuemax="3.59" aria-valuenow="2.80" aria-valuetext="2,80 meter">
+      <span class="label">Sleep de waterlijn</span>
+      <div class="romp"></div>
+      <div id="tikken"></div>
+      <div class="waterlaag" id="waterlaag"></div>
+      <div class="greep" id="greep"><b id="greepTxt">2,80 m</b></div>
+    </div>
+  </div>
+</section>
+
+<div class="maat"><div class="wrap">
+  <p class="zin">135 meter lang, 11,45 meter breed. <span>Plaats voor 3.878 ton of 266 containers, met 5.000 m³ ruim onder de luiken en 8 aansluitingen voor koelcontainers.</span></p>
+  <p class="cert">Gecertificeerd voor <b>Green Award</b>, <b>GMP+</b>, <b>Niwo</b> en <b>Lean &amp; Green</b>, en voor het vervoer van gevaarlijke stoffen onder <b>ADNR</b>.</p>
+</div></div>
+
+<section id="laden">
+  <div class="wrap">
+    <div class="sectiekop">
+      <h2>Past uw lading?</h2>
+      <p class="lead">Vul in wat u wilt vervoeren. U ziet meteen hoe diep de Anda dan ligt en of dat past bij de waterstand.</p>
+    </div>
+    <div class="reken">
+      <div class="invoer">
+        <div class="keuze" role="tablist" aria-label="Soort lading">
+          <button role="tab" id="tabTon" aria-selected="true">Bulk en stukgoed</button>
+          <button role="tab" id="tabTeu" aria-selected="false">Containers</button>
+        </div>
+        <div id="modusTon">
+          <div class="veld">
+            <label for="tonIn">Hoeveel ton?</label>
+            <div class="getal"><input id="tonIn" type="number" inputmode="numeric" min="0" max="3878" step="50" value="2400"><span>ton</span></div>
+            <input type="range" id="tonSch" min="0" max="3878" step="50" value="2400" aria-label="Aantal ton">
+          </div>
+          <dl class="uitkomst">
+            <div><dt>Diepgang met deze lading</dt><dd id="uD">2,59 m</dd></div>
+            <div><dt>Toegestane diepgang</dt><dd id="uMax">2,80 m</dd></div>
+            <div><dt id="uRestNaam">Er kan nog bij</dt><dd id="uRest">ca. 300 ton</dd></div>
+            <div><dt>Past het?</dt><dd><span class="status ja" id="uStatus">Ja, dit past</span></dd></div>
+          </dl>
+        </div>
+        <div id="modusTeu" hidden>
+          <div class="veld">
+            <label for="teuIn">Hoeveel containers (TEU)?</label>
+            <div class="getal"><input id="teuIn" type="number" inputmode="numeric" min="0" max="266" step="2" value="160"><span>TEU</span></div>
+            <input type="range" id="teuSch" min="0" max="266" step="2" value="160" aria-label="Aantal TEU">
+          </div>
+          <dl class="uitkomst">
+            <div><dt>Lagen in het ruim</dt><dd id="uLagen">3 van de 4</dd></div>
+            <div><dt>Nog vrij</dt><dd id="uVrij">106 TEU</dd></div>
+            <div><dt>Vrachtwagens die niet hoeven te rijden</dt><dd id="uWagens">ca. 81</dd></div>
+            <div><dt>Koelcontainers</dt><dd>tot 8 aansluitingen</dd></div>
+          </dl>
+        </div>
+        <a class="btn btn-romp" href="#aanvraag" id="rekenAanvraag">Vraag een prijs aan voor 2.400 ton</a>
+        <p class="klein">Een indicatie op basis van de laadtabel van de Anda. De definitieve berekening maken we samen met u.</p>
+      </div>
+
+      <div class="beeld">
+        <div class="boven"><span>Zijaanzicht, 135 meter</span><span id="beeldTxt">diepgang 2,59 m</span></div>
+        <svg viewBox="0 0 1000 280" role="img" aria-label="Zijaanzicht van het schip met lading en waterlijn">
+          <defs>
+            <clipPath id="ruimClip"><rect x="150" y="60" width="715" height="150"/></clipPath>
+            <linearGradient id="waterGr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#28504e" stop-opacity=".5"/><stop offset="1" stop-color="#15302f" stop-opacity=".9"/></linearGradient>
+          </defs>
+          <rect x="70" y="40" width="10" height="75" fill="#e9eff2"/>
+          <rect x="46" y="22" width="62" height="24" rx="2" fill="#ffffff"/>
+          <rect x="52" y="28" width="50" height="8" fill="#15302f"/>
+          <rect x="40" y="96" width="92" height="22" fill="#ffffff"/>
+          <path d="M22 118 H930 Q962 118 975 140 L982 170 Q985 240 950 240 H60 Q30 240 26 200 Z" fill="#6b1e2a"/>
+          <path d="M26 152 H982 L985 240 H60 Q30 240 26 200 Z" fill="#101d1d"/>
+          <rect x="150" y="98" width="715" height="112" fill="#e9eff2" stroke="#8eaec2" stroke-dasharray="3 3"/>
+          <g clip-path="url(#ruimClip)">
+            <rect id="bulk" x="150" y="210" width="715" height="0" fill="#8b7b60"/>
+            <path id="bulkTop" d="" fill="#8b7b60"/>
+          </g>
+          <g id="containers"></g>
+          <rect x="150" y="210" width="715" height="3" fill="#101d1d"/>
+          <image href="img/favicon-512.png" x="893" y="123" width="24" height="24"/>
+          <g id="merken" fill="#15302f" font-family="Karla, sans-serif" font-size="11"></g>
+          <g class="wl" id="waterG">
+            <rect x="0" y="0" width="1000" height="200" fill="url(#waterGr)"/>
+            <path id="golf" d="" fill="none" stroke="#ffffff" stroke-opacity=".8" stroke-width="2"/>
+          </g>
+          <g class="wl" id="maxG">
+            <line x1="0" x2="1000" y1="0" y2="0" stroke="#6b1e2a" stroke-width="2.5" stroke-dasharray="8 6"/>
+            <text x="12" y="-7" font-family="Karla, sans-serif" font-weight="700" font-size="13" fill="#6b1e2a" id="maxTxt">toegestaan 2,80 m</text>
+          </g>
+        </svg>
+        <div class="legenda"><span><i></i>waterlijn met uw lading</span><span><i class="max"></i>toegestane diepgang</span></div>
+        <div class="tabel">
+          <table>
+            <caption>Laadtabel MS Anda</caption>
+            <tbody>
+              <tr><th scope="row">Diepgang (m)</th><td>1,63</td><td>1,98</td><td>2,32</td><td>2,66</td><td>3,00</td><td>3,34</td><td>3,59</td></tr>
+              <tr><th scope="row">Ton</th><td>1.000</td><td>1.500</td><td>2.000</td><td>2.500</td><td>3.000</td><td>3.500</td><td>3.878</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="schip" id="schip">
+  <div class="wrap schip-rij">
+    <div>
+      <div class="sectiekop" style="margin-bottom:0">
+        <h2>Eén schip voor alle droge lading</h2>
+        <p class="lead">De MS Anda is in 2009 opgeleverd als multipurpose-schip. Een ruim van 105 meter, met of zonder luiken, en containers tot vier lagen hoog.</p>
+      </div>
+      <ul class="lading">
+        <li>Containers</li><li>Droge bulk</li><li>Stukgoed</li><li>Gevaarlijke stoffen (ADNR)</li><li>Afvalstoffen</li><li>Koppelverband tot 9.400 ton</li>
+      </ul>
+      <figure>
+        <img src="img/haven.webp" alt="De MS Anda met vier lagen containers in de haven" width="1425" height="600" loading="lazy">
+        <figcaption>De Anda met containers in vier lagen</figcaption>
+      </figure>
+    </div>
+
+    <div class="fiche">
+      <div class="fkop"><h3>Scheepsfiche</h3><span>ENI 02332439</span></div>
+      <h4>Afmetingen</h4>
+      <dl>
+        <div><dt>Lengte</dt><dd>135,00 m</dd></div>
+        <div><dt>Breedte</dt><dd>11,45 m</dd></div>
+        <div><dt>Maximale diepgang</dt><dd>3,59 m</dd></div>
+        <div><dt>Diepgang leeg</dt><dd>gemiddeld 0,91 m</dd></div>
+      </dl>
+      <h4>Laadruim</h4>
+      <dl>
+        <div><dt>Lengte, breedte, hoogte</dt><dd>105 × 10,10 × 4,50 m</dd></div>
+        <div><dt>Inhoud onder de luiken</dt><dd>ca. 5.000 m³</dd></div>
+        <div><dt>Containers zonder luiken</dt><dd>266 TEU in 4 lagen</dd></div>
+        <div><dt>Containers met luiken</dt><dd>252 TEU in 4 lagen</dd></div>
+        <div><dt>Aansluitingen koelcontainers</dt><dd>8 (3 achter, 5 voor)</dd></div>
+      </dl>
+      <h4>Techniek</h4>
+      <dl>
+        <div><dt>Hoofdmotoren</dt><dd>2× Cummins, 1.200 pk</dd></div>
+        <div><dt>Boegschroeven</dt><dd>2× Cummins, 560 pk</dd></div>
+        <div><dt>Generatoren</dt><dd>2× 64 kVA, geluidsdicht</dd></div>
+        <div><dt>Klaproeren</dt><dd>2</dd></div>
+        <div><dt>Spudpaal voor</dt><dd>10,60 m</dd></div>
+      </dl>
+      <button class="btn btn-lijn" type="button" data-toast="Op de live site downloadt u hier de scheepsfiche als PDF.">Download de scheepsfiche (pdf)</button>
+    </div>
+  </div>
+</section>
+
+<section class="donker" id="groen">
+  <div class="wrap groen-rij">
+    <div>
+      <h2>Schoon varen deden we al voordat het moest</h2>
+      <p class="lead" style="margin-top:20px">De Anda kreeg als eerste multipurpose-schip voor containers, droge bulk en stukgoed een groen label. Een roetfilter en een SCR-katalysator reinigen de uitlaatgassen.</p>
+      <ul class="feiten">
+        <li><b>ca. 90%</b><span>minder stikstofoxiden door de SCR-katalysator</span></li>
+        <li><b>Roetfilter</b><span>haalt fijnstof uit de uitlaatgassen</span></li>
+        <li><b>CCR II</b><span>gecertificeerde hoofdmotoren</span></li>
+        <li><b>Stil</b><span>voldoet aan de strengste geluidsnormen van de Scheepvaartinspectie</span></li>
+      </ul>
+    </div>
+    <div class="wagens">
+      <p class="aantal num">134</p>
+      <p class="aantal-tekst">vrachtwagens hoeven niet de weg op als de Anda vol containers vaart.</p>
+      <div class="raster" id="raster" aria-hidden="true"></div>
+      <div class="tegen">
+        <svg viewBox="0 0 130 38" aria-hidden="true"><path d="M2 22h126l-9 14H9z" fill="#6b1e2a"/><g fill="#c8452f"><rect x="24" y="10" width="19" height="12"/><rect x="45" y="10" width="19" height="12"/><rect x="66" y="10" width="19" height="12"/></g><g fill="#b8cddb"><rect x="87" y="10" width="19" height="12"/><rect x="34" y="1" width="19" height="9"/><rect x="55" y="1" width="19" height="9"/></g><rect x="6" y="5" width="11" height="17" fill="#fff"/></svg>
+        <p>Eén schip tegenover 134 vrachtwagens. Dat rekende de familie uit toen de Anda in de vaart kwam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vaargebied">
+  <div class="wrap">
+    <div class="sectiekop">
+      <h2>Van 's-Gravendeel tot Oostenrijk</h2>
+      <p class="lead">De Anda vaart op de binnenwateren van Nederland, België, Duitsland en Oostenrijk.</p>
+    </div>
+    <div class="gebied-rij">
+      <div class="kaart">
+        <svg viewBox="0 0 800 470" role="img" aria-label="Schematische kaart van het vaargebied">
+          <g font-size="46" font-weight="700" fill="#15302f" fill-opacity=".06" font-family="Anybody, sans-serif">
+            <text x="40" y="120">Nederland</text><text x="30" y="455">België</text><text x="420" y="160">Duitsland</text><text x="560" y="300">Oostenrijk</text>
+          </g>
+          <g fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M140 200 L90 300" stroke="#b8cddb"/>
+            <path d="M140 200 L200 260 L210 340 L180 400" stroke="#b8cddb"/>
+            <path d="M320 400 L385 320" stroke="#b8cddb"/>
+            <path d="M120 165 L140 200 L270 190 L335 230 L385 320 L420 355 L470 375" stroke="#15302f"/>
+            <path d="M470 375 L525 355 L600 370 L640 395" stroke="#28504e"/>
+            <path d="M640 395 L690 410 L750 430" stroke="#6b1e2a"/>
+          </g>
+          <g font-size="13" fill="#172524">
+            <circle cx="140" cy="200" r="9" fill="#6b1e2a" stroke="#fff" stroke-width="3"/><text x="150" y="222" font-weight="700">'s-Gravendeel</text>
+            <circle cx="120" cy="165" r="5" fill="#fff" stroke="#15302f" stroke-width="2.5"/><text x="70" y="152">Rotterdam</text>
+            <circle cx="90" cy="300" r="5" fill="#fff" stroke="#8eaec2" stroke-width="2.5"/><text x="46" y="324">Antwerpen</text>
+            <circle cx="270" cy="190" r="5" fill="#fff" stroke="#15302f" stroke-width="2.5"/><text x="250" y="176">Lobith</text>
+            <circle cx="335" cy="230" r="5" fill="#fff" stroke="#15302f" stroke-width="2.5"/><text x="348" y="224">Duisburg</text>
+            <circle cx="210" cy="340" r="5" fill="#fff" stroke="#8eaec2" stroke-width="2.5"/><text x="222" y="345">Maastricht</text>
+            <circle cx="180" cy="400" r="5" fill="#fff" stroke="#8eaec2" stroke-width="2.5"/><text x="146" y="426">Luik</text>
+            <circle cx="385" cy="320" r="5" fill="#fff" stroke="#15302f" stroke-width="2.5"/><text x="398" y="316">Koblenz</text>
+            <circle cx="320" cy="400" r="5" fill="#fff" stroke="#8eaec2" stroke-width="2.5"/><text x="292" y="426">Trier</text>
+            <rect x="414" y="349" width="12" height="12" fill="#fff" stroke="#6b1e2a" stroke-width="2.5"/><text x="366" y="382">Kaub</text><text x="340" y="397" fill="#6b1e2a" font-size="11">meetpunt waterstand</text>
+            <circle cx="470" cy="375" r="5" fill="#fff" stroke="#15302f" stroke-width="2.5"/><text x="456" y="404">Mainz</text>
+            <circle cx="525" cy="355" r="5" fill="#fff" stroke="#28504e" stroke-width="2.5"/><text x="500" y="340">Frankfurt</text>
+            <circle cx="640" cy="395" r="5" fill="#fff" stroke="#28504e" stroke-width="2.5"/><text x="600" y="382">Neurenberg</text>
+            <circle cx="750" cy="430" r="6" fill="#fff" stroke="#6b1e2a" stroke-width="3"/><text x="738" y="457" font-weight="700">Linz</text>
+          </g>
+          <g font-size="11" fill="#566867" font-style="italic">
+            <text x="196" y="210">Rijn</text><text x="560" y="398">Main</text><text x="676" y="440">Donau</text><text x="160" y="270">Maas</text><text x="318" y="360">Moezel</text>
+          </g>
+          <use href="#bootje" x="321" y="238" width="28" height="14"/>
+        </svg>
+      </div>
+      <aside class="positie">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="color:var(--muted-d)">Waar is de Anda nu?</span><span class="demo">Demo</span></div>
+        <p class="plek">Op de Rijn bij Duisburg</p>
+        <dl>
+          <div><dt>Richting</dt><dd>stroomopwaarts</dd></div>
+          <div><dt>Bron</dt><dd>AIS-positie</dd></div>
+        </dl>
+        <p>Heeft u lading langs de route? Bel ons, dan kijken we of het past.</p>
+        <a class="btn btn-licht" href="tel:+31653484714">Bel 06 53 48 47 14</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="familie" id="familie">
+  <div class="wrap fam-rij">
+    <div class="fam-foto">
+      <img src="img/achterschip.webp" alt="Achterschip van de MS Anda met stuurhuis en Nederlandse vlag" width="1500" height="1000">
+      <div class="naam"><img src="img/beeldmerk.png" alt="" width="380" height="365" loading="lazy"><p>De naam komt van Jan en Ada, de ouders van Jacob.</p></div>
+    </div>
+    <div>
+      <h2>Vier generaties aan het roer</h2>
+      <p class="lead" style="margin-top:20px">Jacob en Paula Verdonk leiden het bedrijf nu, samen met twee ervaren kapiteins. Ze werken op dezelfde manier als de generaties voor hen.</p>
+      <ol class="tijd">
+        <li><time>1927</time><p>M. de Looff laat de <b>Jamajo</b> te water, een sleepschip van 500 ton.</p></li>
+        <li><time>1963</time><p>Zijn dochter en schoonzoon nemen het over en bouwen de Jamajo om tot motorschip.</p></li>
+        <li><time>1976</time><p>De derde generatie neemt het roer over.</p></li>
+        <li><time>1993</time><p>De Jamajo gaat naar de sloop. Een schip van 600 ton krijgt de naam <b>Anda</b> en vaart zand en grind binnen Nederland.</p></li>
+        <li><time>1997</time><p>De vierde generatie stapt in. Een Anda van 2.800 ton vaart op de Rijn, Main, Moezel en Maas.</p></li>
+        <li><time>2004</time><p>De overstap naar containers, met een schip van 110 bij 11,40 meter.</p></li>
+        <li><time>2009</time><p>De huidige <b>MS Anda</b> komt in de vaart: 135 meter, gebouwd voor alle droge lading.</p></li>
+        <li class="nu"><time>2017</time><p><b>Jacob en Paula Verdonk</b> nemen het bedrijf over.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="aanvraag">
+  <div class="wrap">
+    <div class="sectiekop">
+      <h2>Lading aanbieden</h2>
+      <p class="lead">Van waar naar waar, wanneer en hoeveel. Meer hoeven we niet te weten om met u mee te denken.</p>
+    </div>
+    <div class="aanvraag-rij">
+      <div class="formulier">
+        <form id="form" novalidate>
+          <div class="stappen" id="stappen" aria-hidden="true"><span class="aan"></span><span id="st2"></span></div>
+          <div id="stap1">
+            <p class="stapnaam">Stap 1 van 2: de lading</p>
+            <div class="velden">
+              <div class="veld"><label for="fVan">Laadhaven</label><input class="inp" id="fVan" placeholder="Bijvoorbeeld Rotterdam" autocomplete="off"></div>
+              <div class="veld"><label for="fNaar">Loshaven</label><input class="inp" id="fNaar" placeholder="Bijvoorbeeld Duisburg" autocomplete="off"></div>
+              <div class="veld heel"><span class="veldnaam" id="soortNaam">Soort lading</span>
+                <div class="chips" role="radiogroup" aria-labelledby="soortNaam">
+                  <input type="radio" name="soort" id="s1" value="droge bulk" checked><label for="s1">Droge bulk</label>
+                  <input type="radio" name="soort" id="s2" value="containers"><label for="s2">Containers</label>
+                  <input type="radio" name="soort" id="s3" value="stukgoed"><label for="s3">Stukgoed</label>
+                  <input type="radio" name="soort" id="s4" value="andere lading"><label for="s4">Anders</label>
+                </div>
+              </div>
+              <div class="veld"><label for="fHoev">Hoeveelheid</label><input class="inp" id="fHoev" value="2.400 ton"></div>
+              <div class="veld"><label for="fDatum">Laden vanaf</label><input class="inp" id="fDatum" type="date"></div>
+            </div>
+            <div class="acties"><span class="klein" style="margin:0">Dit duurt minder dan een minuut.</span><button type="button" class="btn btn-romp" id="verder">Verder naar uw gegevens</button></div>
+          </div>
+          <div id="stap2" hidden>
+            <p class="stapnaam">Stap 2 van 2: uw gegevens</p>
+            <div class="velden">
+              <div class="veld"><label for="fNaam">Naam</label><input class="inp" id="fNaam" autocomplete="name"></div>
+              <div class="veld"><label for="fBedrijf">Bedrijf</label><input class="inp" id="fBedrijf" autocomplete="organization"></div>
+              <div class="veld"><label for="fTel">Telefoon</label><input class="inp" id="fTel" type="tel" autocomplete="tel"></div>
+              <div class="veld"><label for="fMail">E-mail</label><input class="inp" id="fMail" type="email" autocomplete="email"></div>
+            </div>
+            <div class="acties"><button type="button" class="terug" id="terug">Terug naar de lading</button><button type="submit" class="btn btn-romp">Aanvraag versturen</button></div>
+          </div>
+          <div id="stap3" class="klaar" hidden>
+            <span class="demo" style="justify-self:start">Demo, er is niets verstuurd</span>
+            <h3>Aanvraag verstuurd</h3>
+            <p class="lead" id="klaarTxt"></p>
+          </div>
+        </form>
+      </div>
+      <aside class="direct">
+        <h3>Liever direct contact?</h3>
+        <div>
+          <a class="rij" href="tel:+31653484714"><span>Bellen</span><b>+31 (0)6 53 48 47 14</b></a>
+          <a class="rij" href="https://wa.me/31653484714"><span>WhatsApp</span><b>Stuur een bericht</b></a>
+          <a class="rij" href="mailto:verdonk.anda@vaart.net"><span>E-mail</span><b>verdonk.anda@vaart.net</b></a>
+        </div>
+        <address>Anda Scheepvaart B.V.<br>Atalanta 38<br>3295 PC 's-Gravendeel</address>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="merk" href="#top"><img src="img/logo-anda-wit.png" alt="Anda Scheepvaart B.V." width="1416" height="282" loading="lazy"></a>
+    <nav aria-label="Footer"><a href="#schip">Het schip</a><a href="#groen">Schoon varen</a><a href="#familie">Over ons</a><a href="https://www.facebook.com/scheepvaartondernemingandavof">Facebook</a><a href="https://www.linkedin.com/in/jacobverdonk">LinkedIn</a></nav>
+    <span>Atalanta 38, 's-Gravendeel</span>
+    <span class="credit">Website door <a href="https://maxxmarketing.eu">MaxxMarketing</a></span>
+  </div>
+</footer>
+
+<div class="mbalk">
+  <a href="tel:+31653484714">Bellen</a>
+  <a href="https://wa.me/31653484714">WhatsApp</a>
+  <a class="hoofd" href="#aanvraag">Lading aanbieden</a>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/main.js?v=20260915" defer></script>
+</body>
+</html>
